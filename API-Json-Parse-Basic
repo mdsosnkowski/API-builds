@@ -1,0 +1,22 @@
+# JSON LOOP PARSE FROM API TEXT DATA
+import requests
+import json
+# Get the API Data as Json text
+response = requests.get("http://api.open-notify.org/astros.json")
+print(response.json(),"\n")
+
+# Convert the text data to a Dictionary
+response_dict = json.loads(response.text)
+
+
+#Remove the outer Dictionary and get to the inner Dictionary
+people_dict = response_dict["people"]
+people_dict2 = people_dict[0: 100]
+
+
+# GOAL: pull only the ISS member names
+# Loop over each element of people_dict 
+for i in people_dict2:
+  # Loop over each element of people_dict2
+   print(i["name"])
+ 

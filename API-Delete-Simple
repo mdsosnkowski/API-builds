@@ -1,0 +1,20 @@
+# AIP-Delete-Simple - IN PROGRESS
+import requests
+import json
+
+data = {'api_dev_key':"API_KEY", 
+        'api_option':'paste', 
+        'api_paste_code':"source_code", 
+        'api_paste_format':'python'}
+
+
+print("=======GET Post 3=============")
+response = requests.get("https://jsonplaceholder.typicode.com/posts/3")
+print(response.json())
+print("=======Delete Post 3 ===========")
+response = requests.delete("https://jsonplaceholder.typicode.com/posts/3")
+print(response.json())
+print("=======POST back Data 3============")
+response = requests.post("https://postman-echo.com/post?key1=Value1&key2=Value2")
+
+

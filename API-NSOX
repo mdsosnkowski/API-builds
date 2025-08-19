@@ -1,0 +1,47 @@
+
+# API NSOX
+#https://developer.cisco.com/docs/mds-9000-nx-api-reference/#!processes/show-processes-cpu
+import requests
+import json
+
+"""
+Modify these please
+"""
+#url='https://sbx-nxos-mgmt.cisco.com/ins' 
+url='https://sbx-nxos-mgmt.cisco.com/ins_api'
+switchuser='admin'
+switchpassword='Admin_1234!'
+
+myheaders={'content-type':'application/json'}
+payload={
+  "ins_api":{
+  "version": "1.0",
+  "type": "cli_show",
+  "chunk": "0",
+  "sid": "1",
+  #"input": "show cdp global",
+  #"input": "show cdp neighbor",
+  #"input": "show clock",
+  #"input": "show cores ",
+  #"input":  "show diagnostic result module all",
+  #"input": "show environment",
+  #"input": "show inventory ",
+  #"input": "show module ",
+  #"input": "show nx-api ",
+  #"input": "show port-channel database",
+  #"input": "show processes ",
+  #"input": "show processes log ",
+  #"input": "show processes memory ",
+  #"input": "show topology ",
+  #"input": "show users ",
+  #"input": "show version ",
+  #"input": "show vsan ",
+  #"input": "show zoning ",
+  "output_format": "json"
+  }
+}
+
+response = requests.post(url,data=json.dumps(payload), headers=myheaders,auth=(switchuser,switchpassword)).json()
+output = json.dumps(response, indent=4, sort_keys=True)
+print(output)
+# how is the header passing info ?

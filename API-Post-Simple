@@ -1,0 +1,4 @@
+import requests
+import json
+response = requests.post("https://postman-echo.com/post?key1=Value1&key2=Value2")
+print(response.json())

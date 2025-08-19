@@ -1,0 +1,15 @@
+#BASIC AUTHENTICATION
+import requests
+from requests.auth import HTTPBasicAuth
+
+response = requests.get('https://sbx-nxos-mgmt.cisco.com/', auth=('admin', 'Admin_1234!'))
+print('This code should retrun 200 which means useraname and password were accepted')
+print(response)
+print('')
+#print(response.text)
+
+# Wrong username "test" creates error loging in - what Code recieved ?
+response = requests.get('https://sbx-nxos-mgmt.cisco.com/', auth=('test', 'Admin_1234!'))
+print('Wrong username "user" creates error loging in - what does this Code mean ?')
+print(response)
+print('')
